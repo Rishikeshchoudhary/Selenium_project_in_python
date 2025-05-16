@@ -1,0 +1,23 @@
+#login page
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
+
+service = Service("C:\\chromedriver\\chromedriver-win64\\chromedriver.exe")
+driver = webdriver.Chrome(service=service)
+
+driver.get("https://www.saucedemo.com/")
+driver.find_element(By.NAME,"user-name").send_keys("standard_user")
+driver.find_element(By.ID,"password").send_keys("secret_sauce")
+driver.find_element(By.ID,"login-button").click()
+
+
+act_title=driver.title
+exp_title="Swag Labs"
+
+if act_title==exp_title:
+   print("Login is passed")
+else:
+   print("login is Failed")
+driver.close()
